@@ -1,0 +1,1 @@
+var path="/cloud_note";

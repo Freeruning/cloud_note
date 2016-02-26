@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.tarena.dao.UserMapper">
+<!-- 如果一个方法只有一个参数,那么#{}的变量名随便写,因为只能引用这一个参数,一般情况写
+为了方便阅读,会写成接口中声明的参数名
+ -->
+	<select id="findByName" parameterType="string"
+		resultType="com.tarena.entity.User">
+	   select * from cn_user where cn_user_name=#{username}
+	</select>
+	<insert id="save" parameterType="com.tarena.entity.User">
+	<!-- 如果传入的参数是实体对象或者Map,在#{}中需要些属性名(key),表示引用这个对象(Map)中的某个属性值 -->
+	 insert into cn_user values(#{cn_user_id},#{cn_user_name},#{cn_user_password},#{cn_user_token},#{cn_user_desc})
+	</insert>
+	<update id="updatepwd" parameterType="hashmap">
+	update cn_user set cn_user_password=#{pwd} where cn_user_name=#{username}
+	</update>
+	<update id="update2" parameterType="com.tarena.entity.User">
+	update cn_user set cn_user_password=#{cn_user_password} where cn_user_name=#{cn_user_name}
+	</update>
+	<update id="update3">
+	update cn_user set cn_user_password=#{1} where cn_user_name=#{0}
+	</update>
+	<update id="update4" parameterType="com.tarena.entity.User">
+	update cn_user set cn_user_name=#{cn_user_name},
+	cn_user_password=#{cn_user_password},
+	cn_user_token=#{cn_user_token},
+	cn_user_desc=#{cn_user_desc} where cn_user_id=#{cn_user_id}
+	</update>
+</mapper>
