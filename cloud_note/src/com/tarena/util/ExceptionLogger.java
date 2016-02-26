@@ -1,4 +1,4 @@
-package com.tarena.util;
+﻿package com.tarena.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,6 +31,7 @@ public class ExceptionLogger {
 		Object obj=null;
 		try {
 			obj=p.proceed();
+	
 		} catch (Throwable e) {
        //目标组件发生异常时,记录日志
 			ServletRequestAttributes attr=(ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
@@ -44,7 +45,7 @@ public class ExceptionLogger {
 		  sb.append("IP[").append(request.getRemoteHost()).append("],");
 		 String now=new SimpleDateFormat("yyy-MM-hh HH:mm:ss").format(new Date());
 		 sb.append("在[").append(now).append("],");
-		 sb.append("调用[").append(p.getTarget().getClass().getName()).append(".").append(p.getSignature().getName()).append("]时,发生如下异常:");
+		 sb.append("调用[").append(p.getTarget().getClass().getName()).append(".").append(p.getSignature().getName()).append("]时,发生如下郑超几把 加吧家常:");
 		 Logger logger=Logger.getLogger(ExceptionLogger.class);
 		 logger.error(sb.toString());
 		 StackTraceElement[] element=e.getStackTrace();
